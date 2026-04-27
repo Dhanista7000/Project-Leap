@@ -2102,6 +2102,297 @@ footer::before {
     justify-content: center;
   }
 }
+/* ── TECH STACK DIAGRAM ── */
+#techstack {
+  background: var(--bg);
+  position: relative;
+}
+
+#techstack .section-inner {
+  padding: 64px 48px;
+}
+
+.tech-stack-wrapper {
+  max-width: 700px;
+  margin: 40px auto 0;
+  background: linear-gradient(135deg, rgba(10,24,40,0.95), rgba(5,15,26,0.98));
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0,170,255,0.15);
+}
+
+.tech-header {
+  background: linear-gradient(90deg, rgba(0,170,255,0.15), rgba(0,238,255,0.1));
+  border-bottom: 2px solid var(--border);
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.tech-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 20px rgba(0,238,255,0.6);
+}
+
+.tech-classified {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--amber);
+  letter-spacing: 0.15em;
+  margin-top: 4px;
+}
+
+.tech-body {
+  padding: 24px;
+}
+
+.tech-layer {
+  background: linear-gradient(135deg, rgba(13,32,53,0.8), rgba(10,24,40,0.9));
+  border: 1.5px solid rgba(0,170,255,0.3);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  transition: all 0.3s;
+}
+
+.tech-layer:hover {
+  border-color: var(--cyan);
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0,170,255,0.2);
+}
+
+.tech-layer-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tech-layer-tech {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.tech-item {
+  padding: 4px 10px;
+  background: rgba(0,170,255,0.1);
+  border: 1px solid rgba(0,170,255,0.25);
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.tech-item.highlight {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  font-weight: 600;
+}
+
+/* Connector line (no arrow) */
+.tech-connector {
+  position: relative;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: -6px 0;
+}
+
+.tech-connector-line {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--cyan), var(--blue));
+  box-shadow: 0 0 10px rgba(0,238,255,0.6);
+}
+
+.tech-footer {
+  background: rgba(0,170,255,0.08);
+  border-top: 1.5px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text);
+}
+
+.tech-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--green);
+}
+
+.tech-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+.tech-uptime span {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tech-stack-wrapper {
+    margin: 32px 16px 0;
+  }
+  .tech-layer-tech {
+    gap: 6px;
+    font-size: 0.75rem;
+  }
+  .tech-item {
+    padding: 3px 8px;
+  }
+  .tech-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}  
+
+/* Side Panels for Tech Stack */
+.tech-stack-container {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 40px;
+  align-items: start;
+  max-width: 1400px;
+  margin: 40px auto 0;
+}
+
+.side-panel {
+  background: rgba(10,24,40,0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInSide 0.8s ease both;
+}
+
+.side-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scanLine 3s linear infinite;
+}
+
+.side-panel.left {
+  animation-delay: 0.2s;
+}
+
+.side-panel.right {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInSide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.side-panel.right {
+  animation-name: fadeInSideRight;
+}
+
+@keyframes fadeInSideRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.metric-item {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(0,170,255,0.05);
+  border-left: 2px solid var(--blue);
+  border-radius: 0 4px 4px 0;
+  animation: slideInMetric 0.6s ease both;
+}
+
+.metric-item:nth-child(1) { animation-delay: 0.1s; }
+.metric-item:nth-child(2) { animation-delay: 0.2s; }
+.metric-item:nth-child(3) { animation-delay: 0.3s; }
+.metric-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInMetric {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.metric-label {
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+.metric-value {
+  color: var(--cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+}
+
+.side-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .tech-stack-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .side-panel {
+    display: none;
+  }
+}
 
 </style>
 
@@ -2138,6 +2429,7 @@ footer::before {
       <li><a href="#ai">AI Engine</a></li>
       <li><a href="#livefeed">Live Feed</a></li>
       <li><a href="#deploy">Deploy</a></li>
+      <li><a href="#techstack">Tech</a></li>
     </ul>
     <div class="nav-status">SYSTEM ONLINE</div>
   </div>
@@ -2846,6 +3138,151 @@ footer::before {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TECH STACK SECTION -->
+<!-- TECH STACK SECTION -->
+<section id="techstack">
+  <div class="section-inner">
+    <div class="section-tag">08 — Technology Stack</div>
+    <h2>System <span class="c">Architecture.</span></h2>
+    <p class="section-lead">Classified technical specifications — the complete technology stack powering autonomous wildlife conservation.</p>
+
+    <div class="tech-stack-container">
+      <!-- Left Side Panel -->
+      <div class="side-panel left">
+        <div class="side-title">◈ System Metrics</div>
+        <div class="metric-item">
+          <span class="metric-label">Active Drones</span>
+          <span class="metric-value">7/7 ONLINE</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Data Rate</span>
+          <span class="metric-value">2.4 GB/s</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Network</span>
+          <span class="metric-value">MESH ACTIVE</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Latency</span>
+          <span class="metric-value">12ms</span>
+        </div>
+      </div>
+      
+    <div class="tech-stack-wrapper">
+      <!-- Header -->
+      <div class="tech-header">
+        <div class="tech-title">◈ S.C.O.U.T TECH STACK</div>
+        <div class="tech-classified">CLASSIFIED // CLEARANCE L5</div>
+      </div>
+
+      <!-- Body -->
+      <div class="tech-body">
+        <!-- Layer 1 -->
+        <div class="tech-layer">
+          <div class="tech-layer-title">🎨 PRESENTATION</div>
+          <div class="tech-layer-tech">
+            <span class="tech-item">HTML5</span>
+            <span class="tech-item">CSS3</span>
+            <span class="tech-item">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="tech-connector">
+          <div class="tech-connector-line"></div>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="tech-layer">
+          <div class="tech-layer-title">🧠 AI CORE</div>
+          <div class="tech-layer-tech">
+            <span class="tech-item">YOLOv8</span>
+            <span class="tech-item">MediaPipe</span>
+            <span class="tech-item highlight">TensorFlow</span>
+            <span class="tech-item">CUDA</span>
+          </div>
+        </div>
+
+        <div class="tech-connector">
+          <div class="tech-connector-line"></div>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="tech-layer">
+          <div class="tech-layer-title">☁️ CLOUD</div>
+          <div class="tech-layer-tech">
+            <span class="tech-item">AWS</span>
+            <span class="tech-item">Node.js</span>
+            <span class="tech-item">PostgreSQL</span>
+            <span class="tech-item">Redis</span>
+          </div>
+        </div>
+
+        <div class="tech-connector">
+          <div class="tech-connector-line"></div>
+        </div>
+
+        <!-- Layer 4 -->
+        <div class="tech-layer">
+          <div class="tech-layer-title">📡 COMMUNICATION</div>
+          <div class="tech-layer-tech">
+            <span class="tech-item">MQTT</span>
+            <span class="tech-item">WebSocket</span>
+            <span class="tech-item">900MHz Mesh</span>
+            <span class="tech-item">LTE</span>
+          </div>
+        </div>
+
+        <div class="tech-connector">
+          <div class="tech-connector-line"></div>
+        </div>
+
+        <!-- Layer 5 -->
+        <div class="tech-layer">
+          <div class="tech-layer-title">🚁 HARDWARE</div>
+          <div class="tech-layer-tech">
+            <span class="tech-item highlight">Jetson Nano</span>
+            <span class="tech-item">FLIR Thermal</span>
+            <span class="tech-item">Sony 4K</span>
+            <span class="tech-item">GPS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="tech-footer">
+        <div class="tech-status">
+          <span class="tech-status-dot"></span>
+          ONLINE
+        </div>
+        <div class="tech-uptime">
+          UPTIME: <span>99.9%</span>
+        </div>
+      </div>
+    </div>
+          <!-- Right Side Panel -->
+      <div class="side-panel right">
+        <div class="side-title">◈ Resources</div>
+        <div class="metric-item">
+          <span class="metric-label">CPU Load</span>
+          <span class="metric-value">34%</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Memory</span>
+          <span class="metric-value">6.2/16 GB</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Storage</span>
+          <span class="metric-value">42% USED</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Power</span>
+          <span class="metric-value">98%</span>
+        </div>
+      </div>
   </div>
 </section>
 
